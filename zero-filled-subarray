@@ -1,0 +1,32 @@
+// Problem 2348
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var zeroFilledSubarray = function (nums) {
+	// If array doesnt contain any instance of 0
+	if (!nums.includes(0)) {
+		return 0;
+	}
+
+    let totalSubarrays = 0;
+    let currentStreak = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        if(nums[i] === 0){
+            currentStreak++;
+            totalSubarrays += currentStreak
+        }else{
+            currentStreak = 0
+        }
+    }
+
+    return totalSubarrays;
+
+};
+
+console.log(zeroFilledSubarray([1, 3, 0, 0, 2, 0, 0, 4]));
+console.log(zeroFilledSubarray([0, 0, 0, 2, 0, 0]));
+console.log(zeroFilledSubarray([2,10,2019]));
+console.log(zeroFilledSubarray([0, 0, 0, 1, 2, 0, 0]));
